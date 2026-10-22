@@ -108,14 +108,34 @@ The design utilizes a multi-clock architecture with generated clocks and dedicat
 
 ### Power Consumption
 
-| Metric | Value | Percentage |
+| **Metric** | **Reported Value** | **Percentage** |
 |---|---:|---:|
-| **Total Power** | `5.114e-04` (0.511 mW) | — |
+| **Total Power** | `5.114e-04` | 100.00% |
 | **Cell Internal Power** | `4.157e-04` | 81.29% |
 | **Net Switching Power** | `7.737e-05` | 15.13% |
 | **Cell Leakage Power** | `1.832e-05` | 3.58% |
+| **Clock Network Power** | `4.930e-04` | 96.41% |
 
-**Clock Network Dominance:** Clock network internal and switching power accounts for 96.41% of the power profile (`4.930e-04`).
+### Peak Power
+
+| **Metric** | **Reported Value** |
+|---|---:|
+| **Peak Power** | `0.2338` |
+| **Peak Time** | `1891010.774` |
+
+### Report Units
+
+| **Parameter** | **Reported Unit** |
+|---|---|
+| Capacitive Load | `1e-12 Farad` |
+| Current | `0.001 Amp` |
+| Resistance | `1000 Ohm` |
+| Time | `1e-09 Second` |
+| Voltage | `1 Volt` |
+| Internal Power | `0.001 Watt` |
+| Leakage Power | `1e-12 Watt` |
+
+**Note:** Power values and peak time are presented as reported by PrimeTime. Confirm the report's power and peak-time unit conventions before converting these values to other units.
 
 ---
 
