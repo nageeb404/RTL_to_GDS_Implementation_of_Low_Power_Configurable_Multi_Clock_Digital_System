@@ -1,0 +1,2 @@
+waive -msg {Port coverage for top design unit 'SYS_TOP' is: '1' (25.00 %) port(s) not fully constrained}  -rule {  {Setup_port01}  }  -exact -comment {Created by ICer on 06-Oct-2026 19:15:00} 
+waive -msg {At least two bits (54, 63) of source bus \"SYS_TOP.U0_UART_FIFO.u_fifo_mem.FIFO_MEM\" are not uniformly synchronized to destination bus \"SYS_TOP.U0_UART.U_TX.ser.data_reg\". Reason: different synchronization scheme used}  -rule {  {Ac_conv04}  }  -comment {Created by ICer on 06-Oct-2026 19:23:08}  -exact 

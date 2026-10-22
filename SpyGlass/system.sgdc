@@ -1,0 +1,68 @@
+
+current_design SYS_TOP
+
+sdc_data -file ./system.sdc
+
+####################################################################################
+                  #### Section 1 : Clock Definition ####
+#################################################################################### 
+
+
+####################################################################################
+                  #### Section 2 : Reset Definition ####
+####################################################################################
+
+reset -name RST_N -value 0 -async
+
+####################################################################################
+             #### Section 3 : set input/output clock domains  ####
+####################################################################################
+
+
+####################################################################################
+             #### Section 4 : Quasi static signals  ####
+####################################################################################
+
+#quasi_static -name "SYS_TOP.U0_RegFile.Reg_File[2][*]"
+#quasi_static -name "SYS_TOP.U0_RegFile.Reg_File[3][*]"
+
+####################################################################################
+             #### Section 5 : set_case_analysis  ####
+####################################################################################
+
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][0]" -value 1
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][1]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][2]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][3]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][4]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][5]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][6]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[2][7]" -value 1
+
+
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][0]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][1]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][2]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][3]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][4]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][5]" -value 1
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][6]" -value 0
+set_case_analysis -name "SYS_TOP.U0_RegFile.Reg_File[3][7]" -value 0
+
+####################################################################################
+             #### Section 6 : DATA/RESET Synchronizers  ####
+####################################################################################
+
+reset_synchronizer -name U0_RST_SYNC.SYNC_RST
+reset_synchronizer -name U1_RST_SYNC.SYNC_RST
+sync_cell -name DATA_SYNC
+####################################################################################
+             #### Section 7 : Constraints  ####
+####################################################################################
+cdc_attribute -unrelated  {SYS_TOP.U0_ref_sync.sync_bus SYS_TOP.U0_UART_FIFO.gray_rd_ptr}
+cdc_attribute -unrelated  {SYS_TOP.UART_RX_SYNC SYS_TOP.U0_ref_sync.SYNC}
+cdc_attribute -unrelated  {SYS_TOP.U0_SYS_CTRL.register[7] SYS_TOP.U0_UART_FIFO.u_r2w_sync.meta_flop[3:0] SYS_TOP.U0_ref_sync.sync_bus[7:0] SYS_TOP.U0_ref_sync.SYNC[1]}
+cdc_attribute -unrelated  {SYS_TOP.U0_UART_FIFO.u_fifo_rd.gray_rd_ptr[2] SYS_TOP.U0_UART_FIFO.u_fifo_rd.gray_rd_ptr[3]}
+cdc_attribute -unrelated  {SYS_TOP.U0_UART_FIFO.u_fifo_wr.gray_w_ptr[0] SYS_TOP.U0_UART_FIFO.u_fifo_wr.gray_w_ptr[1] SYS_TOP.U0_UART_FIFO.u_fifo_wr.gray_w_ptr[2] SYS_TOP.U0_UART_FIFO.u_fifo_wr.gray_w_ptr[3]}
+
+
